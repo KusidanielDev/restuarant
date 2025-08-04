@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delicious Bites – Fresh &amp; Tasty Cuisine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <!-- Brand name for the restaurant -->
+        <a href="#">Delicious Bites</a>
+      </div>
+      <nav class="navbar">
+        <ul class="nav-list">
+          <!-- Link to an About or our story page (not implemented but left for expansion) -->
+          <li>
+            <a href="#about" title="Our Story">
+              <i class="fas fa-utensils custom-icon"></i>
+              <span class="icon-label">About</span>
+            </a>
+          </li>
+          <!-- Link to a reservations/contact section -->
+          <li>
+            <a href="#contact" title="Reservations &amp; Contact">
+              <i class="fas fa-phone custom-icon"></i>
+              <span class="icon-label">Contact</span>
+            </a>
+          </li>
+          <!-- Shopping cart icon with badge for ordering -->
+          <li class="cart-icon-container">
+            <a href="#" id="cart-icon" title="View your order">
+              <i class="fas fa-shopping-basket custom-icon"></i>
+              <span class="icon-label">Order</span>
+              <span class="cart-badge">0</span>
+            </a>
+          </li>
+          <!-- Dark mode toggle -->
+          <li class="dark-mode-toggle-container">
+            <a href="#" id="dark-mode-toggle" title="Toggle dark mode">
+              <i class="fas fa-moon custom-icon"></i>
+              <span class="icon-label">Dark&nbsp;Mode</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <!-- Hero section with tagline for the restaurant -->
+      <p>
+        Savour the finest Ghanaian cuisine in a warm and inviting atmosphere
+      </p>
+      <!-- Button to toggle category filter on small screens -->
+      <button class="filter-btn" id="filter-btn">
+        <i class="fas fa-filter"></i> Categories
+      </button>
+      <!-- Dropdown for filtering menu items by category -->
+      <div class="filter-dropdown" id="filter-dropdown">
+        <h4>Menu Categories</h4>
+        <ul class="filter-list">
+          <li class="active" data-category="all">All Dishes</li>
+          <li data-category="starters">Starters</li>
+          <li data-category="mains">Main Course</li>
+          <li data-category="desserts">Desserts</li>
+          <li data-category="drinks">Drinks</li>
+        </ul>
+      </div>
+      <!-- Search and sort controls -->
+      <div class="search-sort-container">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search dishes..."
+          aria-label="Search dishes"
+        />
+        <select id="sort-select" aria-label="Sort dishes">
+          <option value="default">Sort by</option>
+          <option value="priceAsc">Price: Low to High</option>
+          <option value="priceDesc">Price: High to Low</option>
+        </select>
+      </div>
+    </section>
+
+    <main>
+      <section class="reel-app">
+        <div id="reel-main"></div>
+      </section>
+
+      <!-- About section -->
+      <section id="about" class="about-section">
+        <h2>Our Story</h2>
+        <p>
+          Delicious Bites was born from a passion for bringing people together
+          over great food. Founded in the heart of Accra, we blend traditional
+          Ghanaian recipes with international flavours, using fresh local
+          ingredients to craft dishes that delight and inspire.
+        </p>
+        <p>
+          Whether you're joining us for a quick lunch or a celebration, our warm
+          and friendly team will make you feel right at home. We can't wait to
+          share our kitchen's creations with you!
+        </p>
+      </section>
+      <!-- Reservation & contact section -->
+      <section id="contact" class="contact-section">
+        <h2>Reserve a Table</h2>
+        <p>
+          Planning a visit? Reserve a table or send us a message and we'll
+          respond shortly.
+        </p>
+        <form id="reservation-form" class="reservation-form">
+          <div class="form-group">
+            <label for="res-name">Name</label>
+            <input
+              type="text"
+              id="res-name"
+              placeholder="Your full name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="res-phone">Phone</label>
+            <input
+              type="tel"
+              id="res-phone"
+              placeholder="e.g. +233 123 456 789"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="res-date">Date</label>
+            <input type="date" id="res-date" required />
+          </div>
+          <div class="form-group">
+            <label for="res-time">Time</label>
+            <input type="time" id="res-time" required />
+          </div>
+          <div class="form-group">
+            <label for="res-guests">Number of Guests</label>
+            <input
+              type="number"
+              id="res-guests"
+              min="1"
+              max="20"
+              value="2"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="res-message">Special Requests</label>
+            <textarea
+              id="res-message"
+              rows="3"
+              placeholder="Let us know if you have any special requirements"
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Reservation</button>
+        </form>
+        <div class="form-message" id="form-message"></div>
+      </section>
+
+      <!-- Customer testimonials section -->
+      <section id="testimonials" class="testimonials-section">
+        <h2>Customer Reviews</h2>
+        <div class="testimonials-container">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              “The jollof rice was absolutely delicious and the service was
+              outstanding!”
+            </p>
+            <div class="testimonial-author">— Ama&nbsp;K.</div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              “A cosy atmosphere and truly authentic flavours. The fufu with
+              soup reminded me of home.”
+            </p>
+            <div class="testimonial-author">— Kwame&nbsp;A.</div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              “Love the variety of vegetarian options and the refreshing Sobolo!
+              Highly recommended.”
+            </p>
+            <div class="testimonial-author">— Efua&nbsp;D.</div>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location section -->
+      <section id="location" class="location-section">
+        <h2>Find Us</h2>
+        <p>
+          Come visit us at <strong>123 Foodie Lane, Accra, Ghana</strong>. We
+          can't wait to welcome you!
+        </p>
+        <div class="map-container">
+          <img src="./media/map.png" alt="Restaurant location map" />
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <!-- Simple footer tailored to the restaurant -->
+      <p>&copy; 2025 Delicious Bites. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#about">Our Story</a>
+        <a href="#contact">Reservations &amp; Contact</a>
+      </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-modal" id="cart-modal">
+      <div class="cart-header">
+        <h3>Your Order</h3>
+        <button class="close-cart" id="close-cart">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <div class="empty-cart">
+          <i
+            class="fas fa-shopping-cart"
+            style="font-size: 3rem; margin-bottom: 15px"
+          ></i>
+          <p>Your cart is empty</p>
+        </div>
+      </div>
+      <div class="cart-summary">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cart-total">₵0</span>
+        </div>
+        <button class="checkout-btn" id="checkout-btn">
+          <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Product Details Modal -->
+    <div class="product-overlay" id="product-overlay"></div>
+    <div class="product-modal" id="product-modal">
+      <div class="product-modal-content">
+        <button
+          class="product-modal-close"
+          id="product-modal-close"
+          aria-label="Close details"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="product-modal-body" id="product-modal-body">
+          <!-- Dynamic product details will be inserted here via JavaScript -->
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
